@@ -77,6 +77,7 @@ const DashBoard = () => {
   
 
   return (
+
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="grid grid-cols-4 gap-6 mb-6">
         <div className="bg-white p-4 rounded-xl shadow">
@@ -107,6 +108,7 @@ const DashBoard = () => {
           <Doughnut data={doughnutData} options={doughnutOptions} />
         </div>
       </div>
+
     </div>
   );
 };
