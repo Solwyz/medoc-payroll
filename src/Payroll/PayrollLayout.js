@@ -9,6 +9,7 @@ function PayrollLayout() {
             <Header />
             <div className='flex'>
                 <Sidebar />
+                
                 <Outlet />
             </div>
         </div>
