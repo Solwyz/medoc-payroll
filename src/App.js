@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import PayrollLayout from './Payroll/PayrollLayout';
+import DashBoard from './Payroll/Pages/DashBoard/DashBoard';
+import PayRun from './Payroll/Pages/PayRun/PayRun';
+import Approval from './Payroll/Pages/Approval/Approval';
+import Form16 from './Payroll/Pages/Form16/Form16';
+import Settings from './Payroll/Pages/Settings/Settings';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Routes>
+      <Route path='/' element={<PayrollLayout/>}>
+        <Route index element={<DashBoard/>}/>
+        <Route path='dashboard' element={<DashBoard/>}/>
+        <Route path='payrun' element={<PayRun/>}/>
+        <Route path='approval' element={<Approval/>}/>
+        <Route path='form16' element={<Form16/>}/>
+        <Route path='settings' element={<Settings/>}/>
+      </Route>
+     </Routes>
     </div>
   );
 }
