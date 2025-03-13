@@ -10,7 +10,7 @@ function PayrollLayout() {
             <div className='flex'>
                 <Sidebar />
                 
-              <div className='ml-[242px] bg-[#EFEFF5] w-full'>  <Outlet /></div>
+              <div className='ml-[242px] bg-[#EFEFF5] w-full mt-[72px] px-6 py-4'>  <Outlet /></div>
             </div>
         </div>
     )
