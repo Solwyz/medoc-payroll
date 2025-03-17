@@ -9,7 +9,7 @@ import Settings from "../../Assets/Frame (3).svg"
 
 function Sidebar() {
   return (
-    <div className="fixed w-[242px] h-[calc(100vh-72px)] bg-[#2B2342] px-4 py-4 overflow-y-auto">
+    <div className="fixed w-[242px] h-[calc(100vh-72px)] mt-[72px] bg-[#2B2342] px-4 py-4 overflow-y-auto">
       {[
         { name: 'Dashboard', path: 'dashboard',img:Dashboard },
         { name: 'Pay Run', path: "payRun",img:PayRun },
