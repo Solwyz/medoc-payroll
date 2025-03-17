@@ -10,7 +10,7 @@ import Settings from './Payroll/Pages/Settings/Settings';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App font-AnekLatin">
      <Routes>
       <Route path='/' element={<PayrollLayout/>}>
         <Route index element={<DashBoard/>}/>
