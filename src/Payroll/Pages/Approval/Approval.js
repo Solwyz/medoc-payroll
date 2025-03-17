@@ -19,7 +19,7 @@ function Approval() {
 
   return (
     <div>
-      <div className='bg-[#FFFFFF] px-4 py-6'>
+      <div className='bg-[#FFFFFF] px-4 py-6 min-h-screen'>
         <div className='flex justify-between '>
           <div>
             <h1 className='text-[16px] font-medium'>Approvals</h1>
@@ -34,7 +34,7 @@ function Approval() {
         </div>
         <div className='mt-10'>
           <table className='w-full text-start text-[14px] font-normal'>
-            <thead className='px-[19px] py-4 text-[#403D4C] bg-[#DAD4EC] rounded-lg'>
+            <thead className='px-[19px] py-4 text-[#403D4C] bg-[#DAD4EC] rounded-lg '>
               <tr>
                 <th className='font-normal text-start px-[19px] py-4 rounded-l-lg'>Sl.No</th>
                 <th className='font-normal text-start px-[19px] py-4'>Employee ID</th>
