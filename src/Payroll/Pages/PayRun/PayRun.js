@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import searchIcon from '../../Assets/search.svg'
 import arrowLeft from '../../Assets/arrow_back_ios.svg'
@@ -28,6 +29,7 @@ function PayRun() {
             setCurrentPage(page);
         }
     };
+
 
     return (
         <div className='px-6 py-4 font-AnekLatin'>
@@ -71,6 +73,7 @@ function PayRun() {
                 </div>
             </div>
 
+
             <div className='bg-[#FFFFFF] p-4 mt-2 h-svh'>
                 <div className='flex justify-between items-center'>
                     <div className='text-[16px] font-medium'>Employee Summary</div>
@@ -78,6 +81,7 @@ function PayRun() {
                         <div className='border flex items-center px-4 py-[10px] rounded-3xl'>
                             <img src={searchIcon} className='h-[15px] w-[15px]' alt="search" />
                             <input type='text' placeholder='Search employee' className='focus:outline-none text-[12px] ml-2' />
+
                         </div>
                         <select className='text-[12px] font-medium text-[#393939] border px-6 py-[10px] rounded-3xl focus:outline-none'>
                             <option value='All'>All Status</option>
@@ -88,6 +92,7 @@ function PayRun() {
                 </div>
 
                 <div className='mt-8'>
+
                     <table className='w-full text-[14px] font-normal'>
                         <thead className='bg-[#F8F6FF] rounded-3xl'>
                             <tr>
@@ -149,6 +154,7 @@ function PayRun() {
                         <img src={arrowRight}></img>
                     </button>
                 </div>
+
             </div>
 
         </div>
