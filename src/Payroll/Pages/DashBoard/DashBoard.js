@@ -56,7 +56,7 @@ const DashBoard = () => {
     datasets: [
       {
         label: false,
-        data: [28, 30, 24, 26, 22, 27, 25,34, 26, 29, 27, 25],
+        data: [28, 30, 24, 26, 22, 27, 25, 34, 26, 29, 27, 25],
         backgroundColor: "#A09AE5",
         hoverBackgroundColor: "#66629C",
         borderRadius: 8,
@@ -113,16 +113,17 @@ const DashBoard = () => {
     responsive: true,
     maintainAspectRatio: false,
     cutout: "60%",
-    rotation: -90, // Start from the top
-    circumference: 180, // Only show half the circle
+    rotation: -90, // Starts from the top
+    circumference: 180, // Half-doughnut
     plugins: {
       legend: {
         display: false,
-        position: "bottom",
+      },
+      tooltip: {
+        enabled: true, // Hide default tooltip
       },
     },
   };
-
   const [selectedDate, setSelectedDate] = useState("01 Jan - 31 Jan 2025");
 
   const handleDateChange = (event) => {
@@ -179,7 +180,7 @@ const DashBoard = () => {
       </div>
 
       <div className="flex mt-6 justify-between ">
-        <div className="bg-white w-[850px] h-[423px] px-6 pt-[56px] pb-10 rounded-lg border border-[#E5E7EC]">
+        <div className="bg-white w-[820px] h-[423px] px-6 pt-[56px] pb-10 rounded-lg border border-[#E5E7EC]">
           <p className="font-medium text-[#3C4C7F] text-base">
             PAYROLL COST OVERVIEW
           </p>
@@ -192,7 +193,29 @@ const DashBoard = () => {
           <p className="font-medium text-[#3C4C7F] text-base">
             PAYROLL SUMMARY
           </p>
-         <div style={{ height: "104px", width: "206px" }} className="mt-6"> <Doughnut data={doughnutData} options={doughnutOptions} /></div>
+          <div className="relative flex items-center mx-auto justify-center mt-6 w-[206px] h-[204px] ">
+            <Doughnut data={doughnutData} options={doughnutOptions} />
+          </div>
+          <div className="mt-6 flex justify-between w-full px-6">
+            {Object.keys(payrollData.payrollSummary).map((key, index) => (
+              <div key={index} className="text-center">
+                {/* Border color applied instead of background color */}
+                <div
+                  className="rounded-full w-3 h-3  inline-block mr-2"
+                  style={{
+                    backgroundColor:
+                      doughnutData.datasets[0].backgroundColor[index],
+                  }}
+                ></div>
+                <p className="text-xs text-gray-500">
+                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                </p>
+                <p className="text-sm font-medium text-[#3C4C7F]">
+                  AED {payrollData.payrollSummary[key]}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
