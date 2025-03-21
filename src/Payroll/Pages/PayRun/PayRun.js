@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import searchIcon from '../../Assets/search.svg'
+import arrowLeft from '../../Assets/arrow_back_ios.svg'
+import arrowRight from '../../Assets/arrow_back_ios (1).svg'
 
 function PayRun() {
+
+    const employeeData = [{
+        "id": 2 + 1,
+        "payrollId": `T${125600 + 2}`,
+        "name": `Employee ${2 + 1}`,
+        "paidDays": 30,
+        "totalSalary": `Rs ${45000 + 2 * 100}`,
+        "reimbursement": `Rs ${1000 + 2 * 10}`,
+        "paymentMode": 'Bank Transfer',
+        "paymentStatus": 2 % 2 === 0 ? 'Paid' : 'Yet to pay',
+    }];
+
+    const rowsPerPage = 10;
+    const [currentPage, setCurrentPage] = useState(1);
+    const totalPages = Math.ceil(employeeData.length / rowsPerPage);
+
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const paginatedData = employeeData.slice(startIndex, startIndex + rowsPerPage);
+
+    const handlePageChange = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
     return (
         <div className='px-6 py-4 font-AnekLatin'>
             <div className='bg-[#FFFFFF] p-4'>
@@ -44,21 +71,13 @@ function PayRun() {
                 </div>
             </div>
 
-            <div className='bg-[#FFFFFF] p-4 mt-2'>
-                <div className='flex justify-between'>
+            <div className='bg-[#FFFFFF] p-4 mt-2 h-svh'>
+                <div className='flex justify-between items-center'>
                     <div className='text-[16px] font-medium'>Employee Summary</div>
                     <div className='flex gap-2'>
-                        <div className='border flex items-center justify-center gap-6 px-4 py-[10px] rounded-3xl'>
-                            <div>
-                                <img src={searchIcon} className='h-[15px] w-[15px]'></img>
-                            </div>
-                            <div>
-                                <input
-                                    type='text'
-                                    placeholder='Search employee'
-                                    className='focus:outline-none text-[12px]'>
-                                </input>
-                            </div>
+                        <div className='border flex items-center px-4 py-[10px] rounded-3xl'>
+                            <img src={searchIcon} className='h-[15px] w-[15px]' alt="search" />
+                            <input type='text' placeholder='Search employee' className='focus:outline-none text-[12px] ml-2' />
                         </div>
                         <select className='text-[12px] font-medium text-[#393939] border px-6 py-[10px] rounded-3xl focus:outline-none'>
                             <option value='All'>All Status</option>
@@ -69,21 +88,66 @@ function PayRun() {
                 </div>
 
                 <div className='mt-8'>
-                    <table className="w-full ">
-                    <thead className="bg-[#F8F6FF] px-6 py-4 border border-[#DAD4EC] rounded-lg">
-                                    <tr className='rounded-lg'>
-                                        <th className="p-3 font-medium text-center text-sm">Product Name</th>
-                                        <th className="p-3 font-medium text-center text-sm">Category</th>
-                                        <th className="p-3 font-medium text-center text-sm">Stock Quantity</th>
-                                        <th className="p-3 font-medium text-center text-sm">Payment Mode</th>
-                                        <th className="p-3 font-medium text-center text-sm">Date</th>
-                                        <th className="p-3 font-medium text-center text-sm">Supplier</th>
-                                        <th className="p-3 font-medium text-center text-sm">Total amount</th>
-                                        <th className="p-3 font-medium text-center text-sm">Status</th>
-                                        <th className="p-3 font-medium text-center text-sm">Purchase Order ID</th>
-                                    </tr>
-                                </thead>
+                    <table className='w-full text-[14px] font-normal'>
+                        <thead className='bg-[#F8F6FF] rounded-3xl'>
+                            <tr>
+                                <th className='px-4 py-2 text-left font-medium'>Sl.No</th>
+                                <th className='px-4 py-2 text-left font-medium'>Payroll ID</th>
+                                <th className='px-4 py-2 text-left font-medium'>Name</th>
+                                <th className='px-4 py-2 text-left font-medium'>Paid Days</th>
+                                <th className='px-4 py-2 text-left font-medium'>Total Salary</th>
+                                <th className='px-4 py-2 text-left font-medium'>Reimbursement</th>
+                                <th className='px-4 py-2 text-left font-medium'>Payment Mode</th>
+                                <th className='px-4 py-2 text-left font-medium'>Payment Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {paginatedData.map((emp, index) => (
+                                <tr key={emp.id} className='border-b'>
+                                    <td className='px-4 py-2'>{startIndex + index + 1}</td>
+                                    <td className='px-4 py-2'>{emp.payrollId}</td>
+                                    <td className='px-4 py-2'>{emp.name}</td>
+                                    <td className='px-4 py-2'>{emp.paidDays}</td>
+                                    <td className='px-4 py-2'>{emp.totalSalary}</td>
+                                    <td className='px-4 py-2'>{emp.reimbursement}</td>
+                                    <td className='px-4 py-2'>{emp.paymentMode}</td>
+                                    <td className='px-4 py-2'>{emp.paymentStatus}</td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
+                </div>
+
+                {/* Pagination Controls */}
+                <div className="flex justify-end items-center mt-4 space-x-2">
+                    {/* Previous Button */}
+                    <button
+                        className={`px-3 py-2 rounded ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'hover:bg-gray-300'}`}
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                       <img src={arrowLeft}></img>
+                    </button>
+
+                    {/* Page Numbers */}
+                    {[...Array(totalPages)].map((_, index) => (
+                        <button
+                            key={index + 1}
+                            className={`px-3 py-2 rounded ${currentPage === index + 1 ? 'bg-gray-300' : 'hover:bg-gray-200'}`}
+                            onClick={() => handlePageChange(index + 1)}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
+
+                    {/* Next Button */}
+                    <button
+                        className={`px-3 py-2 rounded ${currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'hover:bg-gray-300'}`}
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        <img src={arrowRight}></img>
+                    </button>
                 </div>
             </div>
 
