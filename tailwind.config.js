@@ -9,7 +9,7 @@ module.exports = {
         Popins: ["Poppins", "sans-serif"],
       },
       backgroundImage: {
-        'adminLogin':"url('/src/Assets/signup.png')"
+        'adminLogin':"url('/src/Payroll/Assets/signup.png')",
 
 
       },
