@@ -32,7 +32,7 @@ function PayRun() {
 
 
     return (
-        <div className='px-6 py-4 font-AnekLatin'>
+        <div className='  font-AnekLatin'>
             <div className='bg-[#FFFFFF] p-4'>
                 <div className='text-[16px] font-medium'>Payroll</div>
                 <div className='text-[12px] text-[#7E7E7E] font-normal mt-2'>Find all employees payroll below</div>
