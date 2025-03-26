@@ -131,7 +131,7 @@ const DashBoard = () => {
   };
 
   return (
-    <div className="px-6 py-4  min-h-screen">
+    <div className=" min-h-screen">
       <div className="bg-white border border-[#E5E7EC] flex w-full p-4 h-[60px] text-center items-center space-x-6">
         <h1 className="text-base font-normal">Payrolls</h1>
         <select
