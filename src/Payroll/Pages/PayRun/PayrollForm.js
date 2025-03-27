@@ -88,7 +88,7 @@ function PayrollForm() {
               name="DisplayName"
               value={selectedEmployee.name}
               readOnly
-              className="border border-gray-300 py-[15px] px-4 w-[251px] rounded-lg"
+              className="border border-gray-300 py-[12px]  px-4 w-[251px] rounded-lg"
             />
             <input type="hidden" name="EmployeeName" value={selectedEmployee.id} />
           </div>
@@ -99,7 +99,7 @@ function PayrollForm() {
               name="BasicSalary"
               value={payroll.BasicSalary}
               onChange={handleChange}
-              className="border border-gray-300 py-[15px] px-4 w-[251px] rounded-lg"
+              className="border border-gray-300 py-[12px]  px-4 w-[251px] rounded-lg"
               placeholder="25000"
             />
           </div>
@@ -110,7 +110,7 @@ function PayrollForm() {
               name="Bonus"
               value={payroll.Bonus}
               onChange={handleChange}
-              className="border border-gray-300 py-[15px] px-4 w-[251px] rounded-lg"
+              className="border border-gray-300 py-[12px]  px-4 w-[251px] rounded-lg"
               placeholder="10000"
             />
           </div>
@@ -134,7 +134,7 @@ function PayrollForm() {
                 <input
                   type="number"
                   placeholder="Amount"
-                  className="border w-[251px] py-[15px] px-4 rounded-lg focus:outline-none mt-2"
+                  className="border w-[251px] py-[12px]  px-4 rounded-lg focus:outline-none mt-2"
                   name={allowance}
                   value={allowanceAmounts[allowance] || ""}
                   onChange={handleAllowanceAmountChange}
@@ -163,7 +163,7 @@ function PayrollForm() {
                 <input
                   type="number"
                   placeholder="Amount"
-                  className="border w-[251px] py-[15px] px-4 rounded-lg focus:outline-none mt-2"
+                  className="border w-[251px] py-[12px]  px-4 rounded-lg focus:outline-none mt-2"
                   name={deduction}
                   value={deductionAmounts[deduction] || ""}
                   onChange={handleDeductionAmountChange}
@@ -181,7 +181,7 @@ function PayrollForm() {
               name="BankAccount"
               value={payroll.BankAccount}
               onChange={handleChange}
-              className="border border-gray-300 py-[15px] px-4 w-[542px] rounded-lg"
+              className="border border-gray-300 py-[12px]  px-4 w-[542px] rounded-lg"
               placeholder="9992 2563 2541 7895"
             />
           </div>
@@ -192,7 +192,7 @@ function PayrollForm() {
               name="IFSCCode"
               value={payroll.IFSCCode}
               onChange={handleChange}
-              className="border border-gray-300 py-[15px] px-4 w-[251px] rounded-lg"
+              className="border border-gray-300 py-[12px]  px-4 w-[251px] rounded-lg"
               placeholder="AGGB256178"
             />
           </div>
@@ -215,7 +215,7 @@ function PayrollForm() {
               name="PayPeriod"
               value={payroll.PayPeriod}
               onChange={handleChange}
-              className="border border-gray-300 py-[15px] px-4 w-[251px] rounded-lg"
+              className="border border-gray-300 py-[12px] focus:outline-none  px-4 w-[251px] rounded-lg"
             >
               <option value="">Select Pay Period</option>
               <option value="MONTHLY">Monthly</option>
@@ -228,7 +228,7 @@ function PayrollForm() {
               name="PaymentMethod"
               value={payroll.PaymentMethod}
               onChange={handleChange}
-              className="border border-gray-300 py-[15px] px-4 w-[251px] rounded-lg"
+              className="border border-gray-300 py-[12px] focus:outline-none  px-4 w-[251px] rounded-lg"
             >
               <option value="">Select Payment Method</option>
               <option value="CASH">CASH</option>
@@ -239,7 +239,7 @@ function PayrollForm() {
         <button
           type="submit"
           disabled={!isFormValid}
-          className={`bg-[#2B2342] text-white py-4 px-6 rounded-lg ${!isFormValid ? "opacity-80 cursor-not-allowed" : ""
+          className={`bg-[#2B2342] text-white py-[12px] px-6 rounded-lg ${!isFormValid ? "opacity-80 cursor-not-allowed" : ""
             }`}
         >
           Save Payroll
